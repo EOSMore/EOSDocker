@@ -8,6 +8,10 @@
 - **P2P_PORT** 本地P2P映射端口
 ## 配置
 - 修改`config/`文件夹中的配置
+## 启动
+```shell
+$ docker-compose up -d
+```
 ## 运行cleos命令
 通过设置一个别名来运行`cleos`命令
 ```shell
