@@ -1,5 +1,5 @@
 #!/bin/sh
-alias cleos='docker-compose exec nodeosd cleos --wallet-url http://localhost:8888'
+alias cleos='docker-compose exec keosd cleos -u http://nodeosd:8888 --wallet-url http://localhost:8888'
 cleos wallet create > wallet.info
 cleos create account eosio eosio.bios EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
 cleos set contract eosio.bios data-dir/contracts/eosio.bios -p eosio.bios
