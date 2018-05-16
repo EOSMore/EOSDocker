@@ -19,9 +19,12 @@ services:
       - backend  
   keosd:
     image: eosio/eos:${EOSIO_VERSION}
-    command: /opt/eosio/bin/keosd --wallet-dir /opt/eosio/bin/data-dir
+    command: /opt/eosio/bin/keosd --wallet-dir /opt/eosio/bin/wallet-dir
+    working_dir:
+      /opt/eosio/bin/
     volumes:
       - ./data-dir:/opt/eosio/bin/data-dir
+      - ${WALLET_PATH}:/opt/eosio/bin/wallet-dir
     networks:
       - backend  
 networks:

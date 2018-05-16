@@ -1,4 +1,4 @@
 .env
 block-data/
 data-dir/contracts/
-data-dir/*.wallet
+wallet/
