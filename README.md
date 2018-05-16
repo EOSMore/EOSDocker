@@ -25,6 +25,7 @@ $ cleos get info
 
 ## 部署HELLO合约
 > 确保在此之前已经部署系统合约并创建`hello`账号
+
 ```shell
 $ cleos set contract hello contracts/hello -p hello
 ```
