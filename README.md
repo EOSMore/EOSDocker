@@ -3,8 +3,7 @@
 ## 环境变量
 复制`.env.example`到`.env`，配置环境变量
 - **EOSIO_VERSION** `eosio/eos`镜像版本，完整列表查看[镜像仓库](https://hub.docker.com/r/eosio/eos/tags/)
-- **DATA_PATH** 块数据本地挂载路径
-- **CONTRACTS_PATH** 智能合约本地挂载路径
+- **BLOCK_DATA_PATH** 块数据本地挂载路径
 - **HTTP_PORT** 本地HTTP映射端口
 - **P2P_PORT** 本地P2P映射端口
 
@@ -27,11 +26,11 @@ $ cleos get info
 > 确保在此之前已经部署系统合约并创建`hello`账号
 
 ```shell
-$ cleos set contract hello contracts/hello -p hello
+$ cleos set contract hello data-dir/contracts/hello -p hello
 ```
 
 ## 部署自定义合约
-复制自定义合约到**CONTRACTS_PATH**中，即可通过`contracts/`路径访问到合约
+复制自定义合约到`data-dir/contracts`中
 ```shell
-$ cleos set contract custom contracts/CUSTOM_CONTRACT -p custom
+$ cleos set contract custom data-dir/contracts/CUSTOM_CONTRACT -p custom
 ```
