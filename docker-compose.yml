@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+  nodeosd:
+    image: eosio/eos:${EOSIO_VERSION}
+    command: /opt/eosio/bin/nodeos.sh
+    ports:
+      - ${HTTP_PORT}:8888
+      - ${P2P_PORT}:9876
+    expose:
+      - "8888"
+    volumes:
+      - ./config:/opt/eosio/bin/config-dir
+      - ${DATA_PATH}:/opt/eosio/bin/data-dir
+      - ${CONTRACTS_PATH}:/opt/eosio/bin/contracts
