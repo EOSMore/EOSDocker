@@ -14,3 +14,18 @@ services:
     volumes:
       - ./data-dir:/opt/eosio/bin/data-dir
       - ${BLOCK_DATA_PATH}:/root/.local/share/eosio/nodeos/data
+    networks: 
+      - frontend
+      - backend  
+  keosd:
+    image: eosio/eos:${EOSIO_VERSION}
+    command: /opt/eosio/bin/keosd --wallet-dir /opt/eosio/bin/data-dir
+    volumes:
+      - ./data-dir:/opt/eosio/bin/data-dir
+    networks:
+      - backend  
+networks:
+  frontend:
+    driver: "bridge"
+  backend:
+    driver: "bridge"  
