@@ -18,7 +18,7 @@ $ docker-compose up -d
 ## 运行cleos命令
 通过设置一个别名来运行`cleos`命令
 ```shell
-$ alias cleos='docker-compose exec nodeosd cleos --wallet-url http://localhost:8888'
+$ alias cleos='docker-compose exec keosd cleos -u http://nodeosd:8888 --wallet-url http://localhost:8888'
 $ cleos get info
 ```
 
