@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "Alias cleos"
-alias cleos='docker-compose exec keosd cleos -u http://nodeosd:8888 --wallet-url http://localhost:8888'
+shopt -s expand_aliases
+alias cleos='docker-compose exec keosd cleos -u http://nodeosd:8888 --wallet-url http://127.0.0.1:8900'
 
 public_key=EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
 private_key=5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
@@ -25,8 +26,8 @@ cleos set contract eosio.msig data-dir/contracts/eosio.msig -p eosio.msig
 sleep 1
 
 echo "Create Tokens"
-cleos push action eosio.token create '{"issuer":"eosio", "maximum_supply":"1000000000.0000 SYS", "can_freeze":0, "can_recall":0, "can_whitelist":0}' -p eosio.token
-cleos push action eosio.token issue '["eosio","1000000000.0000 SYS","deposit started"]' -p eosio
+cleos push action eosio.token create '{"issuer":"eosio", "maximum_supply":"1000000000.0000 EOS", "can_freeze":0, "can_recall":0, "can_whitelist":0}' -p eosio.token
+cleos push action eosio.token issue '["eosio","1000000000.0000 EOS","deposit started"]' -p eosio
 sleep 1
 
 echo "Set System Contract"

@@ -1,9 +1,9 @@
-version: "2"
+version: "3"
 
 services:
   nodeosd:
-    image: eosio/eos:${EOSIO_VERSION}
-    command: /opt/eosio/bin/nodeosd.sh --max-transaction-time 200 --contracts-console --genesis-json /opt/eosio/bin/data-dir/genesis.json
+    image: registry.cn-shenzhen.aliyuncs.com/eosmore/eosio:${EOSIO_VERSION}
+    command: "/opt/eosio/bin/nodeosd.sh --max-transaction-time 200 --contracts-console --genesis-json /opt/eosio/bin/data-dir/genesis.json -e"
     working_dir:
       /opt/eosio/bin/
     ports:
@@ -14,21 +14,15 @@ services:
     volumes:
       - ./data-dir:/opt/eosio/bin/data-dir
       - ${BLOCK_DATA_PATH}:/root/.local/share/eosio/nodeos/data
-    networks: 
-      - frontend
-      - backend  
   keosd:
-    image: eosio/eos:${EOSIO_VERSION}
-    command: /opt/eosio/bin/keosd --wallet-dir /opt/eosio/bin/wallet-dir
+    image: registry.cn-shenzhen.aliyuncs.com/eosmore/eosio:${EOSIO_VERSION}
+    command: /opt/eosio/bin/keosd --wallet-dir /opt/eosio/bin/wallet-dir --http-server-address=127.0.0.1:8900
     working_dir:
       /opt/eosio/bin/
+    expose:
+      - "8900" 
+    links:
+      - nodeosd   
     volumes:
       - ./data-dir:/opt/eosio/bin/data-dir
       - ${WALLET_PATH}:/opt/eosio/bin/wallet-dir
-    networks:
-      - backend  
-networks:
-  frontend:
-    driver: "bridge"
-  backend:
-    driver: "bridge"  
