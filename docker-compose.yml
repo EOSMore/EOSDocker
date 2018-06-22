@@ -2,7 +2,7 @@ version: "3"
 
 services:
   nodeosd:
-    image: registry.cn-shenzhen.aliyuncs.com/eosmore/eosio:${EOSIO_VERSION}
+    image: imeos/eosio:${EOSIO_VERSION}
     command: "/opt/eosio/bin/nodeosd.sh --max-transaction-time 200 --contracts-console --genesis-json /opt/eosio/bin/data-dir/genesis.json -e"
     working_dir:
       /opt/eosio/bin/
@@ -15,7 +15,7 @@ services:
       - ./data-dir:/opt/eosio/bin/data-dir
       - ${BLOCK_DATA_PATH}:/root/.local/share/eosio/nodeos/data
   keosd:
-    image: registry.cn-shenzhen.aliyuncs.com/eosmore/eosio:${EOSIO_VERSION}
+    image: imeos/eosio:${EOSIO_VERSION}
     command: /opt/eosio/bin/keosd --wallet-dir /opt/eosio/bin/wallet-dir --http-server-address=127.0.0.1:8900
     working_dir:
       /opt/eosio/bin/
